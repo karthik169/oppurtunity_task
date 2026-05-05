@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from config import Config
+from qatar_admin.config import Config
 from models import db
 from flask_login import LoginManager
 
