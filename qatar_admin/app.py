@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from qatar_admin.config import Config
-from models import db
-from flask_login import LoginManager
+from qatar_admin.models import db
+from qatar_admin.routes import *
 
 app = Flask(__name__)
 app.config.from_object(Config)
