@@ -1,6 +1,6 @@
 from flask import request, jsonify
-from app import app
-from models import db, Admin, Opportunity
+from qatar_admin.app import app
+from qatar_admin.models import db, Admin, Opportunity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, current_user
 
