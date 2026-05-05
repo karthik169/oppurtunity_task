@@ -404,7 +404,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
             generateCaptcha('login');   // ✅ only on failure
         }
     });
-    generateCaptcha('login');
+   
 });
 
 // ===== SIGNUP =====
