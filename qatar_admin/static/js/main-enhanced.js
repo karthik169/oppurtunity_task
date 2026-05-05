@@ -22,7 +22,42 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         captchas[type] = code;
         const el = document.getElementById(type + 'CaptchaText');
-        if (el) el.textContent = code;
+        if (!el) return;
+
+        // Render each character as a styled span with slight rotation for realism
+        const colors = ['#e63946','#2d6a4f','#1d3557','#e76f51','#6a0572','#0077b6'];
+        el.innerHTML = code.split('').map((ch, i) => {
+            const rot   = (Math.random() * 20 - 10).toFixed(1);
+            const color = colors[i % colors.length];
+            const size  = (18 + Math.random() * 6).toFixed(0);
+            return `<span style="
+                display:inline-block;
+                transform:rotate(${rot}deg);
+                color:${color};
+                font-size:${size}px;
+                font-weight:700;
+                font-family:'Courier New',monospace;
+                letter-spacing:2px;
+                text-shadow:1px 1px 0 rgba(0,0,0,0.15);
+                user-select:none;
+                margin:0 1px;
+            ">${ch}</span>`;
+        }).join('');
+
+        // Make sure the container itself is visible
+        Object.assign(el.style, {
+            display:        'inline-flex',
+            alignItems:     'center',
+            justifyContent: 'center',
+            minWidth:       '120px',
+            minHeight:      '40px',
+            background:     'linear-gradient(135deg,#f0f4ff 0%,#e8f5e9 100%)',
+            borderRadius:   '8px',
+            padding:        '6px 14px',
+            border:         '1.5px dashed #aaa',
+            letterSpacing:  '4px',
+            verticalAlign:  'middle',
+        });
     }
 
     generateCaptcha('login');
