@@ -401,6 +401,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
             setTimeout(() => showDashboard(email), 1200);
         } else {
             showToast(data.error || 'Login failed');
+            generateCaptcha('login');   // ✅ only on failure
         }
     });
     generateCaptcha('login');
